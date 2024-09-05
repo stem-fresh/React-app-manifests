@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: reactjs-app-deploy
-  namespace: default
+  namespace:  irys-ui
   labels:
     app: reactjs-app
 spec:
