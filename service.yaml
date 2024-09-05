@@ -4,12 +4,12 @@ metadata:
   name: reactjs-app-service
   namespace: irys-ui
   labels:
-    app: reactjs-app
+    app: irys-app
   annotations:
     cloud.google.com/load-balancer-type: "External"
 spec:
   selector:
-    app: reactjs-app
+    app: irys-app
   ports:
     - protocol: TCP
       port: 85
