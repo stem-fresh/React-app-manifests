@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reactjs-app-deploy
-  namespace: default
+  name: irys-app-deploy
+  namespace:  irys-ui
   labels:
-    app: reactjs-app
+    app: irys-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: reactjs-app
+      app: irys-app
   template:
     metadata:
       labels:
-        app: reactjs-app
+        app: irys-app
     spec:
       affinity:
         podAntiAffinity:
@@ -25,10 +25,10 @@ spec:
                     - key: app
                       operator: In
                       values:
-                        - reactjs-app
+                        - irys-app
                 topologyKey: "kubernetes.io/hostname"
       containers:
-        - name: reactjs-app-container
+        - name: irys-app-container
           image: gcr.io/repo:17
           ports:
             - containerPort: 3000
