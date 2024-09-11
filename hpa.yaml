@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: irys-app-hpa
-  namespace: irys-ui
+  name: react-app-hpa
+  namespace: react-ui
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: irys-app-deploy
+    name: react-app-deploy
   minReplicas: 2
   maxReplicas: 4
   metrics:

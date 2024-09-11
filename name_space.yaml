@@ -1,6 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: irys-ui
+  name: react-ui
   labels:
-    name:  irys-ui
+    name:  react-ui
