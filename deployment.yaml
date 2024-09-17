@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: irys-app-deploy
-  namespace:  irys-ui
+  namespace: irys-ui
   labels:
     app: irys-app
 spec:
@@ -41,7 +41,7 @@ spec:
               memory: "3Gi"
           securityContext:
             runAsNonRoot: true
-            runAsUser: 1000
+            runAsUser: 101  # Change to nginx user UID (101 in Alpine)
             allowPrivilegeEscalation: false
             capabilities:
               drop:
