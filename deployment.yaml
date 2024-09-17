@@ -40,9 +40,8 @@ spec:
               cpu: "2"
               memory: "3Gi"
           securityContext:
-            runAsNonRoot: true
-            runAsUser: 101  # Set specific non-root user
-            allowPrivilegeEscalation: false
+            runAsNonRoot: true  # Enforce running as a non-root user
+            allowPrivilegeEscalation: false  # Prevent privilege escalation
             capabilities:
               drop:
                 - ALL
