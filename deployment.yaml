@@ -29,7 +29,7 @@ spec:
                 topologyKey: "kubernetes.io/hostname"
       containers:
         - name: irys-app-container
-          image: gcr.io/kxn-dev-432901/kxn-dev/irys-ui-img:84
+          image: gcr.io/kxn-dev-432901/kxn-dev/irys-ui-img:83
           ports:
             - containerPort: 3000
           resources:
@@ -40,9 +40,8 @@ spec:
               cpu: "2"
               memory: "3Gi"
           securityContext:
-            runAsNonRoot: true
-            runAsUser: 101  # Change to nginx user UID (101 in Alpine)
-            allowPrivilegeEscalation: false
+            runAsNonRoot: true  # Enforce non-root user
+            allowPrivilegeEscalation: false  # Prevent privilege escalation
             capabilities:
               drop:
                 - ALL
