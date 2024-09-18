@@ -11,6 +11,4 @@ spec:
       name: letsencrypt-prod-key
     solvers:
     - http01:
-      ingress:
-        class: "nginx" 
-
+        http01: {}
