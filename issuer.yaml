@@ -8,8 +8,8 @@ spec:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: dineshsai14211@gmail.com
     privateKeySecretRef:
-      name: letsencrypt-staging-key
+      name: letsencrypt-prod-key
     solvers:
       - http01:
-          ingress:
-            class: nginx
+          serviceType: LoadBalancer
+
