@@ -7,7 +7,7 @@ spec:
   secretName: tls-secret
   issuerRef:
     name: letsencrypt-staging
-    kind: Issuer
+    kind: ClusterIssuer
   commonName: simplereact.online
   dnsNames:
     - simplereact.online
