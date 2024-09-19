@@ -1,17 +1,15 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
   namespace: irys-ui
 spec:
   acme:
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: dineshsai14211@gmail.com
     privateKeySecretRef:
       name: letsencrypt-staging-key
     solvers:
     - http01:
-        http01:
-          service:
-            name: cm-acme-http-solver
-            namespace: irys-ui
+        ingress:
+          class: nginx
