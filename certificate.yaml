@@ -11,8 +11,6 @@ spec:
   commonName: simplereact.online
   dnsNames:
     - simplereact.online
-  acme:
-    config:
+  solvers:
     - http01:
-        ingress:
-          serviceType: LoadBalancer
+        serviceType: LoadBalancer
