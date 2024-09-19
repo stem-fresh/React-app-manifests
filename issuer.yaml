@@ -10,5 +10,4 @@ spec:
       name: letsencrypt-staging-key
     solvers:
       - http01:
-          http01:
-            ingress: null
+          ingress: {}
