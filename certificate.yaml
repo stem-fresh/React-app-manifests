@@ -17,5 +17,4 @@ spec:
     - digital signature
     - key encipherment
   renewBefore: 24h
-  keySize: 2048
   duration: 2160h # 90 days
