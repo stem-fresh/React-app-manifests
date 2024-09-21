@@ -4,7 +4,7 @@ metadata:
   name: app-ingress
   namespace: irys-ui
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Redirect all HTTP traffic to HTTPS
 spec:
   ingressClassName: nginx  # This ensures NGINX Ingress Controller handles this Ingress
