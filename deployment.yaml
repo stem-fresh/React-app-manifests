@@ -6,7 +6,7 @@ metadata:
   labels:
     app: irys-app
 spec:
-  replicas: 1
+  replicas: 1 # Consider scaling for higher availability
   selector:
     matchLabels:
       app: irys-app
@@ -31,12 +31,7 @@ spec:
         - name: irys-app-container
           image: gcr.io/kxn-dev-432901/kxn-dev/irys-ui-img:116
           ports:
-            - containerPort: 80
-            - containerPort: 443
-          volumeMounts:
-            - name: ssl-certs
-              mountPath: /etc/nginx/ssl
-              readOnly: true
+            - containerPort: 80  # Only HTTP, since HTTPS is handled by NGINX Ingress
           resources:
             requests:
               cpu: "1"
@@ -53,18 +48,14 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 80  # Adjust probe to check HTTP (port 80)
             initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 80  # Adjust probe to check HTTP (port 80)
             initialDelaySeconds: 10
             periodSeconds: 5
             failureThreshold: 3
-      volumes:
-        - name: ssl-certs
-          secret:
-            secretName: tls-secret
