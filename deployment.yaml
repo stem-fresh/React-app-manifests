@@ -29,7 +29,7 @@ spec:
                 topologyKey: "kubernetes.io/hostname"
       containers:
         - name: irys-app-container
-          image: gcr.io/kxn-dev-432901/kxn-dev/irys-ui-img:116
+          image: gcr.io/kxn-dev-432901/kxn-dev/irys-ui-img:120
           ports:
             - containerPort: 80  # Only HTTP, since HTTPS is handled by NGINX Ingress
           resources:
