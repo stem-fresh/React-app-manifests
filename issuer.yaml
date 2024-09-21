@@ -4,10 +4,14 @@ metadata:
   name: letsencrypt-staging
 spec:
   acme:
-    email: dineshsai14211@gmail.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: dineshsai14211@gmail.com  # Your email for Let's Encrypt notifications
+    server: https://acme-staging-v02.api.letsencrypt.org/directory  # Staging server URL
     privateKeySecretRef:
-      name: letsencrypt-staging-key
+      name: letsencrypt-staging-key  # Secret to store the private key
     solvers:
       - http01:
-          ingress: {}
+          # No ingress class specified since you are using GCP Load Balancer directly
+          http01:
+            service:
+              name: app-nginx-service  # Replace with your service name
+              port: 80  # Port where your service is exposed
