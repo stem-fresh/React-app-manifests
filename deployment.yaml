@@ -53,14 +53,16 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: 443
+              scheme: HTTPS  # Correctly using HTTPS
             initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: 443
+              scheme: HTTPS  # Correctly using HTTPS
             initialDelaySeconds: 10
             periodSeconds: 5
             failureThreshold: 3
