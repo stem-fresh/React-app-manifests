@@ -5,18 +5,20 @@ metadata:
   namespace: react-ui
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Redirect all HTTP traffic to HTTPS
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  # Rewrite for multi-path forwarding
+    nginx.ingress.kubernetes.io/use-regex: "true"    # Use regex for path matching
 spec:
-  ingressClassName: nginx  # This ensures NGINX Ingress Controller handles this Ingress
+  ingressClassName: nginx
   tls:
     - hosts:
         - simplereact.online
-      secretName: tls-secret  # The secret created by cert-manager with the certificate
+      secretName: tls-secret
   rules:
     - host: simplereact.online
       http:
         paths:
-          - path: /
+          - path: /  # Route for the main React app
             pathType: Prefix
             backend:
               service:
@@ -27,13 +29,13 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: prometheus-operated.monitoring.svc.cluster.local
+                name: prometheus-operated
                 port:
-                  number: 9090  # Port for Prometheus
+                  number: 9090
           - path: /grafana(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: monitoring-grafana.monitoring.svc.cluster.local
+                name: monitoring-grafana
                 port:
-                  number: 80  # The exposed port of the Grafana service
+                  number: 80
