@@ -48,14 +48,14 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 3000  # Update this to match the target port
+              port: 3005 # Update this to match the target port
             initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
-              port: 3000  # Update this to match the target port
+              port: 3005  # Update this to match the target port
             initialDelaySeconds: 10
             periodSeconds: 5
             failureThreshold: 3
