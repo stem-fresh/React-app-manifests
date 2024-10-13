@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-react-app  # You can change this to a relevant name for your app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/stem-fresh/React-app-manifests  # Replace with your repository URL
+    targetRevision: dev
+    path: ./  # Path to the folder containing the Kubernetes manifests, using ./ for the root
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: react-ui
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+      - CreateNamespace=true
+  revisionHistoryLimit: 5     # Keeps history of the last 5 deployments for rollback

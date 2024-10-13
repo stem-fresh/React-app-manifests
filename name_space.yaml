@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: react-ui
   labels:
-    name:  react-ui
+    name: react-ui
 

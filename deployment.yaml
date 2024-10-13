@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: react-app-deploy
   namespace: react-ui
-
   labels:
     app: react-app
 spec:
@@ -31,7 +30,6 @@ spec:
       containers:
         - name: react-app-container
           image: gcr.io/repo:17
-
           ports:
             - containerPort: 80  # Only HTTP, since HTTPS is handled by NGINX Ingress
           resources:
