@@ -27,13 +27,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: prometheus-service  
+                name: monitoring-kube-prometheus-prometheus 
                 port:
                   number: 9090  # Port for Prometheus
           - path: /grafana
             pathType: Prefix
             backend:
               service:
-                name: grafana-service  
+                name: monitoring-grafana 
                 port:
                   number: 80  # The exposed port of the Grafana service
