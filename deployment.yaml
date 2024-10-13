@@ -2,11 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: react-app-deploy
-  namespace:  react-ui
+  namespace: react-ui
+
   labels:
     app: react-app
 spec:
-  replicas: 1
+  replicas: 1 # Consider scaling for higher availability
   selector:
     matchLabels:
       app: react-app
@@ -30,33 +31,33 @@ spec:
       containers:
         - name: react-app-container
           image: gcr.io/repo:17
+
           ports:
-            - containerPort: 3000
+            - containerPort: 80  # Only HTTP, since HTTPS is handled by NGINX Ingress
           resources:
             requests:
-              cpu: "250m"
-              memory: "512Mi"
+              cpu: "1"
+              memory: "2Gi"
             limits:
-              cpu: "500m"
-              memory: "1Gi"
+              cpu: "2"
+              memory: "3Gi"
           securityContext:
-            runAsNonRoot: true
-            runAsUser: 1000
-            allowPrivilegeEscalation: false
+            runAsNonRoot: true  # Enforce running as a non-root user
+            allowPrivilegeEscalation: false  # Prevent privilege escalation
             capabilities:
               drop:
                 - ALL
           livenessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 3000  # Update this to match the target port
             initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /
-              port: 3000
+              port: 3000  # Update this to match the target port
             initialDelaySeconds: 10
             periodSeconds: 5
             failureThreshold: 3

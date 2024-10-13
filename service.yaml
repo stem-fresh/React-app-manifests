@@ -7,12 +7,13 @@ metadata:
     app: react-app
   annotations:
     cloud.google.com/load-balancer-type: "External"
+
 spec:
   selector:
     app: react-app
   ports:
-    - protocol: TCP
-      port: 85
-      targetPort: 3000
-  type: LoadBalancer
-  sessionAffinity: None # Use "ClientIP" if session affinity is needed
+    - name: http
+      protocol: TCP
+      port: 80        # This is the port the service will expose
+      targetPort: 3000 # This is the port the container is listening on
+  type: ClusterIP
