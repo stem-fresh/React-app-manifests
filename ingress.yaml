@@ -36,4 +36,4 @@ spec:
               service:
                 name: monitoring-grafana 
                 port:
-                  number: 80  # The exposed port of the Grafana service
+                  number: 3000  # The exposed port of the Grafana service
