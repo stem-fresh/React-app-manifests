@@ -24,7 +24,7 @@ spec:
                 name: prometheus-operated
                 port:
                   number: 9090
-          - path: /grafana(/|$)(.*)
+          - path: /login(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
