@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - monitoring.simplereact.online
-      secretName: tls-secret-monitoring
+      secretName: tls-monitoring-secret
   rules:
     - host: monitoring.simplereact.online
       http:

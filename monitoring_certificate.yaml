@@ -4,7 +4,7 @@ metadata:
   name: my-monitoring-certificate
   namespace: monitoring
 spec:
-  secretName: tls-secret-monitoring
+  secretName: tls-monitoring-secret
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
