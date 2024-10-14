@@ -24,6 +24,20 @@ spec:
                 name: react-app-service
                 port:
                   number: 80
+          - path: /prometheus(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: prometheus-proxy
+                port:
+                  number: 9090
+          - path: /grafana(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: grafana-proxy
+                port:
+                  number: 80
 
 
 

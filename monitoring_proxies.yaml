@@ -1,0 +1,29 @@
+# Prometheus Service in react-ui
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-proxy
+  namespace: react-ui
+spec:
+  type: ExternalName
+  externalName: prometheus-operated.monitoring.svc.cluster.local
+  ports:
+    - port: 9090
+      targetPort: 9090
+
+---
+# Grafana Service in react-ui
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-proxy
+  namespace: react-ui
+spec:
+  type: ExternalName
+  externalName: monitoring-grafana.monitoring.svc.cluster.local
+  ports:
+    - port: 80
+      targetPort: 80
+
+#This setup creates local proxies within the react-ui 
+#namespace that direct traffic to the Prometheus and Grafana services in the monitoring namespace
