@@ -23,7 +23,7 @@ spec:
               service:
                 name: react-app-service
                 port:
-                  number: 80
+                  number: 85
           
 
 
