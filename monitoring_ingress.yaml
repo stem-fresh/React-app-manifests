@@ -17,7 +17,7 @@ spec:
     - host: monitoring.simplereact.online
       http:
         paths:
-          - path: /prometheus(/|$)(.*)
+          - path: /promentheus(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
