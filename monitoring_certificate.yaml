@@ -8,9 +8,9 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: simplereact.online
+  commonName: monitoring.simplereact.online
   dnsNames:
-    - simplereact.online
+    - monitoring.simplereact.online
   privateKey:
     algorithm: RSA
   usages:

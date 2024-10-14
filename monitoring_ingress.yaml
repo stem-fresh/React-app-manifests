@@ -11,10 +11,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - simplereact.online
+        - monitoring.simplereact.online
       secretName: tls-secret-monitoring
   rules:
-    - host: simplereact.online
+    - host: monitoring.simplereact.online
       http:
         paths:
           - path: /prometheus(/|$)(.*)
@@ -24,7 +24,7 @@ spec:
                 name: prometheus-operated
                 port:
                   number: 9090
-          - path: /(.*)
+          - path: /grafana(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
